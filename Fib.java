@@ -1,7 +1,31 @@
+import java.lang.*;
+
 public class Fib {
 	
-	public static void main(String[] args) {
+	private static long time;
 
+	public static void main(String[] args) {
+		if(args.length > 0) {
+			int n = Integer.parseInt(args[0]);
+
+			start();
+			int f = fibo(n);
+			long tmpTime = stop();
+
+			System.out.println("Fibonacci von " + n + " beträgt " + f + " ("+ tmpTime +"ms)");
+		}
+		else
+			System.out.println("Geben Sie eine Zahl als Parameter an.");
+	}
+
+	private static int fibonacci(int n) {
+		int tmp = n;
+
+		if(n > 0)
+			tmp += fibonacci(n - 1);
+
+		System.out.println(tmp);
+		return tmp;
 
 	}
 
@@ -10,9 +34,9 @@ public class Fib {
 
 		@param n = Zahl von der die Fakultaet berechnet werden soll.
 	*/
-	private int fakultät(int n) {
+	private int fakultaet(int n) {
 		if(n > 0)
-			return n * fakultät(n - 1);
+			return n * fakultaet(n - 1);
 		else
 			return 1;
 	}
@@ -26,10 +50,19 @@ public class Fib {
 		@param fibi_i_1
 		@param fibi_i_2
 	*/
-	private int fibo(int n, int i, int fibi_i_1, int fibi_i_2) {
-		if(n <= 1) return n;
-		else if(i == n) return fibi_i_1 + fibi_i_2;
-		else return fibi(n, i + 1, fibi_i_1 + fibi_i_2; fibi_i_1);
+	private static int fibo(int n, int i, int fibi_i_1, int fibi_i_2) {
+		int z;
+		if(n <= 1)
+			z = n;
+		else if(i == n)
+			z = fibi_i_1 + fibi_i_2;
+		else 
+			z = fibo(n, i + 1, fibi_i_1 + fibi_i_2, fibi_i_1);
+
+		//	Ausgabe der aktuellen Fibonacci-Zahl
+		System.out.println(z);
+
+		return z;
 	}
 
 	/**
@@ -37,8 +70,16 @@ public class Fib {
 
 		@param n
 	*/
-	private int fibo(int n) {
-		return fibi(n, 2, 1, 0);
+	private static int fibo(int n) {
+		return fibo(n, 2, 1, 0);
+	}
+
+	private static void start() {
+		time = System.currentTimeMillis();
+	}
+
+	private static long stop() {
+		return System.currentTimeMillis() - time;
 	}
 
 }
