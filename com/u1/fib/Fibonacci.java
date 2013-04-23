@@ -1,5 +1,7 @@
 package com.u1.fib;
 
+import java.math.BigInteger;
+
 /**
  * Created by: Stefan Kaufhold
  * Date: 22.04.13
@@ -7,15 +9,15 @@ package com.u1.fib;
 public class Fibonacci {
 
     public static void main(String[] args) {
-        for (int  i = 0; i < 100; i++) {
-            System.out.println(i + " - " + fibLoop(i));
+        for (long  i = 0; i < 1000; i++) {
+            System.out.println(i + " - " + fibLoop(BigInteger.valueOf(i)));
         }
     }
 
     /**
      * Naive Fibonacci implementation
      */
-    public static int fib(int n) {
+    public static long fib(long n) {
         if (n > 1) {
             return fib(n-1) + fib(n-2);
         }
@@ -24,35 +26,35 @@ public class Fibonacci {
         }
     }
 
-    public static int fibo(int n) {
-        return fibi(n, 2, 1, 0);
+    public static BigInteger fibo(BigInteger n) {
+        return fibi(n, BigInteger.valueOf(2), BigInteger.ONE, BigInteger.ZERO);
     }
 
-    public static int fibi(int n, int i, int fibi_i_1, int fibi_i_2) {
-        if (n <= 1)
+    public static BigInteger fibi(BigInteger n, BigInteger i, BigInteger fibi_i_1, BigInteger fibi_i_2) {
+        if (n.compareTo(BigInteger.ONE) <= 0)
             return n;
-        else if (i == n)
-            return fibi_i_1 + fibi_i_2;
+        else if (i.equals(n))
+            return fibi_i_1.add(fibi_i_2);
         else
-            return fibi(n, i+1, fibi_i_1 + fibi_i_2, fibi_i_1);
+            return fibi(n, i.add(BigInteger.ONE), fibi_i_1.add(fibi_i_2), fibi_i_1);
     }
 
     /**
      * fibi method implemented with loops
      */
-    public static int fibLoop(int n) {
-        if (n <= 1)
+    public static BigInteger fibLoop(BigInteger n) {
+        if (n.compareTo(BigInteger.ONE) <= 0)
             return  n;
 
-        int fibi_i_1 = 1;
-        int fibi_i_2 = 0;
-        int fibi_i_1_new;
+        BigInteger fibi_i_1 = BigInteger.valueOf(1);
+        BigInteger fibi_i_2 = BigInteger.valueOf(0);
+        BigInteger fibi_i_1_new;
 
-        for (int i = 2; i < n; i++) {
-            fibi_i_1_new = fibi_i_1 + fibi_i_2;
+        for (BigInteger i = BigInteger.valueOf(2); i.compareTo(n) < 0; i = i.add(BigInteger.ONE)) {
+            fibi_i_1_new = fibi_i_1.add(fibi_i_2);
             fibi_i_2 = fibi_i_1;
             fibi_i_1 = fibi_i_1_new;
         }
-        return fibi_i_1 + fibi_i_2;
+        return fibi_i_1.add(fibi_i_2);
     }
 }
