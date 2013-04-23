@@ -18,11 +18,11 @@ public class RectangleTest {
 
     @Test
     public void testGetArea() throws Exception {
-        assertEquals("Area", 6.0, rect.getArea(), .000001);
+        assertEquals("Area", 6.0, rect.getArea(), 1e-15);
     }
 
     @Test
     public void testGetEdgeLength() throws Exception {
-        assertEquals("Edge Length", 10, rect.getEdgeLength(), .000001);
+        assertEquals("Edge Length", 10, rect.getEdgeLength(), 1e-15);
     }
 }

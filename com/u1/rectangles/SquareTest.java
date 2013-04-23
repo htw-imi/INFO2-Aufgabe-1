@@ -17,11 +17,11 @@ public class SquareTest {
     }
     @Test
     public void testGetArea() throws Exception {
-        assertEquals(9, sqr.getArea(), .0000000001);
+        assertEquals(9, sqr.getArea(), 1e-15);
     }
 
     @Test
     public void testGetEdgeLength() throws Exception {
-        assertEquals(12, sqr.getEdgeLength(), .0000000001);
+        assertEquals(12, sqr.getEdgeLength(), 1e-15);
     }
 }

@@ -30,19 +30,19 @@ public class FibonacciTest {
 
     @Test
     public void testFib() throws Exception {
-        System.out.println("Naive fib started");
-        Fibonacci.fib(30);
+        System.out.println("Naive fib (30) started");
+        System.out.println(Fibonacci.fib(30));
     }
 
     @Test
     public void testFibo() throws Exception {
-        System.out.println("Fibo started");
+        System.out.println("Fibo (8000) started");
         System.out.println(Fibonacci.fibo(BigInteger.valueOf(8000)));
     }
 
     @Test
     public void testFibLoop() throws Exception {
-        System.out.println("FibLoop started");
+        System.out.println("FibLoop (8000) started");
         System.out.println(Fibonacci.fibLoop(BigInteger.valueOf(8000)));
     }
 }
